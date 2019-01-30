@@ -2,11 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
 
-trainers = {
-  Tom: {
+const trainers = {
+  1: {
+    name: 'Tom',
     pokemon : ['pikachu', 'squritle']
   },
-  Sam: {
+  2: {
+    name: 'Sam',
     pokemon : ['charmander', 'gengar']
   }
 }
@@ -19,10 +21,9 @@ app.get('/trainer-api', (req, res) => {
   res.json(trainers)
 });
 
-app.get('/trainer-api/:trainerName', (req, res) => {
-  res.json(trainers[req.params.trainerName])
+app.get('/trainer-api/:arrayNum', (req, res) => {
+  res.json(trainers[req.params.arrayNum])
 });
-
 
 const port = process.env.PORT || 3000;
 app.listen(port)
